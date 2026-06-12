@@ -1,46 +1,82 @@
-# Fix `www.alkraj.com` showing the Zoho welcome page
+# Fix GitHub Pages DNS for `www.alkraj.com`
 
-The website code is ready in this repository. If `https://www.alkraj.com` still opens the Zoho welcome page, the domain is still pointing to Zoho's default website/parking service instead of GitHub Pages.
+GitHub Pages is reporting `DNS check unsuccessful` because the public DNS for `www.alkraj.com` and/or its alternate apex domain `alkraj.com` is not pointing to GitHub Pages yet.
 
-## Exact Zoho DNS records to use
+The website code and `CNAME` file in this repository are already configured for:
 
-In Zoho DNS, change only the website records below. Keep all Zoho Mail records unchanged.
+```text
+www.alkraj.com
+```
 
-| Type | Host/Name | Value/Points to | TTL | Action |
-| --- | --- | --- | --- | --- |
-| CNAME | `www` | `tarunxt.github.io` | Auto/default | Add or replace |
-| A | `@` | `185.199.108.153` | Auto/default | Add or replace |
-| A | `@` | `185.199.109.153` | Auto/default | Add or replace |
-| A | `@` | `185.199.110.153` | Auto/default | Add or replace |
-| A | `@` | `185.199.111.153` | Auto/default | Add or replace |
+The remaining fix is in the domain DNS control panel shown in your screenshot: **OpenSRS → Name Servers/DNS → Modify DNS Zone**.
 
-Remove any conflicting Zoho Website, Zoho Sites, forwarding, parking, or default host records for `www` or `@`. Do not remove MX, SPF, DKIM, DMARC, or other mail-related records.
+## 1. Confirm the active DNS provider
 
-## GitHub Pages settings
+In OpenSRS, DNS records in **Modify DNS Zone** only work when the domain's name servers are set to OpenSRS SystemDNS:
 
-1. Open the repository on GitHub.
+```text
+ns1.systemdns.com
+ns2.systemdns.com
+ns3.systemdns.com
+```
+
+If the domain uses different name servers, update the same records at that external DNS provider instead. Do not edit records in multiple places; only the authoritative DNS provider matters.
+
+## 2. Records to create in OpenSRS DNS Zone
+
+Remove any existing website, parking, forwarding, Zoho Sites, or default host records for `www` or the root/apex domain before adding these records. Keep mail records such as MX, SPF, DKIM, and DMARC unchanged.
+
+| Type | Host/Name | Value/Points to | Purpose |
+| --- | --- | --- | --- |
+| CNAME | `www` | `tarunxt.github.io` | Sends `www.alkraj.com` to this GitHub Pages account |
+| A | `@` or blank root host | `185.199.108.153` | Sends `alkraj.com` to GitHub Pages |
+| A | `@` or blank root host | `185.199.109.153` | Sends `alkraj.com` to GitHub Pages |
+| A | `@` or blank root host | `185.199.110.153` | Sends `alkraj.com` to GitHub Pages |
+| A | `@` or blank root host | `185.199.111.153` | Sends `alkraj.com` to GitHub Pages |
+| AAAA | `@` or blank root host | `2606:50c0:8000::153` | Optional IPv6 support for `alkraj.com` |
+| AAAA | `@` or blank root host | `2606:50c0:8001::153` | Optional IPv6 support for `alkraj.com` |
+| AAAA | `@` or blank root host | `2606:50c0:8002::153` | Optional IPv6 support for `alkraj.com` |
+| AAAA | `@` or blank root host | `2606:50c0:8003::153` | Optional IPv6 support for `alkraj.com` |
+
+Important:
+
+- `www` must be a **CNAME** to `tarunxt.github.io`, not an A record, not `alkraj.com`, and not a GitHub repository URL.
+- The root/apex host is usually entered as `@`, blank, or `alkraj.com` depending on the DNS form.
+- Do not create more than one `www` record. A second `www` A, CNAME, forwarding, or parking record can keep GitHub's check failing.
+
+## 3. GitHub Pages settings
+
+1. Open the repository that actually deploys this site on GitHub.
 2. Go to **Settings → Pages**.
 3. Set **Source** to **GitHub Actions**.
-4. Confirm the custom domain is `www.alkraj.com`.
-5. Wait for the deployment workflow to finish.
-6. Enable **Enforce HTTPS** after GitHub finishes issuing the certificate.
+4. Set **Custom domain** to:
 
-This repository includes a GitHub Actions workflow that publishes the static site automatically after pushes to `main` or `work`.
+```text
+www.alkraj.com
+```
 
-## Verify after DNS propagation
+5. Wait for the Pages workflow to deploy.
+6. Click **Check again** after DNS has propagated.
+7. Enable **Enforce HTTPS** only after GitHub finishes validating DNS and issuing the certificate.
+
+If GitHub Pages is configured in a different repository from the one containing this website, move the Pages configuration and custom domain to the website repository or deploy this repository from the repository currently selected in GitHub Pages.
+
+## 4. Verify after DNS propagation
 
 Run these checks after saving DNS changes:
 
 ```bash
 dig www.alkraj.com CNAME +short
 dig alkraj.com A +short
+dig alkraj.com AAAA +short
 curl -I https://www.alkraj.com
 ```
 
 Expected results:
 
-- `www.alkraj.com` should resolve to `tarunxt.github.io`.
-- `alkraj.com` should resolve to the four GitHub Pages IP addresses listed above.
-- `curl -I https://www.alkraj.com` should return a GitHub Pages response instead of the Zoho welcome page.
+- `www.alkraj.com` resolves to `tarunxt.github.io`.
+- `alkraj.com` resolves to the four GitHub Pages A records listed above.
+- If IPv6 records were added, `alkraj.com` resolves to the four GitHub Pages AAAA records listed above.
+- `curl -I https://www.alkraj.com` returns a GitHub Pages response instead of a parking or default hosting page.
 
-DNS and HTTPS certificate updates can take minutes to a few hours. If the Zoho page still appears immediately after changing records, clear the browser cache or test in an incognito window.
+DNS and HTTPS certificate updates can take minutes to a few hours. If the old page still appears immediately after changing records, clear the browser cache or test in an incognito window.

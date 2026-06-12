@@ -1,11 +1,11 @@
-# Deployment checklist for www.alkraj.com
+# Deployment checklist for `www.alkraj.com`
 
-The website files are ready in this repository. If the public domain still shows Zoho's default page, the `www` DNS record is still pointing to Zoho's website/parking service instead of GitHub Pages.
+This repository is ready to deploy as a static GitHub Pages site for `www.alkraj.com`. If GitHub shows `DNS check unsuccessful`, the issue is almost always that the live DNS records for the domain still point somewhere else or are being edited at the wrong DNS provider.
 
 ## 1. Publish from GitHub Pages
 
 1. Push this repository to GitHub.
-2. Open the repository in GitHub.
+2. Open the repository that should host the Alkraj website.
 3. Go to **Settings → Pages**.
 4. Under **Build and deployment**, choose **Source: GitHub Actions**. The included workflow deploys this static site automatically after pushes to `main` or `work`.
 5. Under **Custom domain**, enter:
@@ -18,35 +18,49 @@ www.alkraj.com
 
 The `CNAME` file in this repository already tells GitHub Pages that the site should answer for `www.alkraj.com`.
 
-## 2. Update DNS in Zoho
+## 2. Update DNS in OpenSRS or the authoritative DNS provider
 
-In Zoho's DNS manager for `alkraj.com`, update website records only. Do **not** remove Zoho Mail MX records.
+Your screenshot shows OpenSRS. OpenSRS DNS zone records only apply if the domain uses these name servers:
+
+```text
+ns1.systemdns.com
+ns2.systemdns.com
+ns3.systemdns.com
+```
+
+If the domain uses another provider's name servers, make the same DNS changes there instead.
+
+Update website records only. Do **not** remove Zoho Mail or other email records.
 
 | Type | Host/Name | Value/Points to | Purpose |
 | --- | --- | --- | --- |
 | CNAME | `www` | `tarunxt.github.io` | Sends `www.alkraj.com` to GitHub Pages |
-| A | `@` | `185.199.108.153` | Optional root domain support for `alkraj.com` |
-| A | `@` | `185.199.109.153` | Optional root domain support for `alkraj.com` |
-| A | `@` | `185.199.110.153` | Optional root domain support for `alkraj.com` |
-| A | `@` | `185.199.111.153` | Optional root domain support for `alkraj.com` |
+| A | `@` or blank root host | `185.199.108.153` | Sends `alkraj.com` to GitHub Pages |
+| A | `@` or blank root host | `185.199.109.153` | Sends `alkraj.com` to GitHub Pages |
+| A | `@` or blank root host | `185.199.110.153` | Sends `alkraj.com` to GitHub Pages |
+| A | `@` or blank root host | `185.199.111.153` | Sends `alkraj.com` to GitHub Pages |
+| AAAA | `@` or blank root host | `2606:50c0:8000::153` | Optional IPv6 support |
+| AAAA | `@` or blank root host | `2606:50c0:8001::153` | Optional IPv6 support |
+| AAAA | `@` or blank root host | `2606:50c0:8002::153` | Optional IPv6 support |
+| AAAA | `@` or blank root host | `2606:50c0:8003::153` | Optional IPv6 support |
 
 Important notes:
 
-- The `www` CNAME should point to `tarunxt.github.io`, not to `alkraj.com`, not to a GitHub repository URL, and not to any Zoho website/parking target.
-- Remove any Zoho Website, Zoho Sites, forwarding, parking, or default records for `www` or `@` if they conflict with the records above.
-- Keep MX, SPF, DKIM, and DMARC records for Zoho Mail unchanged.
+- The `www` host should point to `tarunxt.github.io`, not to `alkraj.com`, not to a GitHub repository URL, and not to any website parking target.
+- Remove any website, forwarding, parking, or default records for `www` or `@` if they conflict with the records above.
+- Keep MX, SPF, DKIM, and DMARC records unchanged so email continues working.
 
 ## 3. Enable HTTPS
 
-After DNS is correct, return to **GitHub → Settings → Pages** and enable **Enforce HTTPS**. GitHub may need time to issue the certificate, so the option can take a while to become available.
+After DNS is correct, return to **GitHub → Settings → Pages** and click **Check again**. Enable **Enforce HTTPS** after GitHub validates the domain and issues the certificate. The HTTPS option can remain unavailable until DNS is correct.
 
 ## 4. Do you need AWS?
 
 No, not for this starter site. The recommended setup is:
 
 - **GitHub Pages** for free static website hosting.
-- **Zoho DNS** for domain records.
-- **Zoho Mail** for email.
+- **OpenSRS or the active DNS provider** for domain records.
+- **Zoho Mail** for email, if email is already hosted there.
 
 Use AWS later only if you add backend features such as login, databases, APIs, file uploads, search infrastructure, or server-side booking workflows.
 
@@ -55,7 +69,9 @@ Use AWS later only if you add backend features such as login, databases, APIs, f
 After DNS has propagated, check:
 
 ```bash
+dig www.alkraj.com CNAME +short
+dig alkraj.com A +short
 curl -I https://www.alkraj.com
 ```
 
-A working setup should return a GitHub Pages response for the Alkraj website instead of the Zoho welcome/parking page. You can also run `dig www.alkraj.com CNAME +short`; it should return `tarunxt.github.io`.
+A working setup returns `tarunxt.github.io` for `www.alkraj.com` and a GitHub Pages response for `https://www.alkraj.com` instead of a parking, forwarding, or default hosting page.
