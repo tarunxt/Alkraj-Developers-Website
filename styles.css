@@ -642,6 +642,27 @@ textarea:focus {
   width: fit-content;
 }
 
+.contact-form .button.primary:disabled {
+  cursor: wait;
+  opacity: 0.68;
+  transform: none;
+}
+
+.form-status {
+  min-height: 1.4em;
+  margin: -4px 0 0;
+  color: var(--ink-dark);
+  font-weight: 700;
+}
+
+.form-status.is-success {
+  color: #1c6f3f;
+}
+
+.form-status.is-error {
+  color: #9b2f24;
+}
+
 .site-footer {
   display: flex;
   flex-wrap: wrap;
