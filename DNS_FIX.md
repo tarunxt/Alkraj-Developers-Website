@@ -1,11 +1,11 @@
-# Fix GitHub Pages DNS for `www.alkraj.com`
+# Fix GitHub Pages DNS for `alkraj.com`
 
-GitHub Pages is reporting `DNS check unsuccessful` because the public DNS for `www.alkraj.com` and/or its alternate apex domain `alkraj.com` is not pointing to GitHub Pages yet.
+GitHub Pages is showing a 404 for `alkraj.com` because the Pages custom domain and the public DNS records must agree on the root/apex domain.
 
 The website code and `CNAME` file in this repository are already configured for:
 
 ```text
-www.alkraj.com
+alkraj.com
 ```
 
 The remaining fix is in the domain DNS control panel shown in your screenshot: **OpenSRS → Name Servers/DNS → Modify DNS Zone**.
@@ -28,7 +28,7 @@ Remove any existing website, parking, forwarding, Zoho Sites, or default host re
 
 | Type | Host/Name | Value/Points to | Purpose |
 | --- | --- | --- | --- |
-| CNAME | `www` | `tarunxt.github.io` | Sends `www.alkraj.com` to this GitHub Pages account |
+| CNAME | `www` | `tarunxt.github.io` | Redirects `www.alkraj.com` to this GitHub Pages account |
 | A | `@` or blank root host | `185.199.108.153` | Sends `alkraj.com` to GitHub Pages |
 | A | `@` or blank root host | `185.199.109.153` | Sends `alkraj.com` to GitHub Pages |
 | A | `@` or blank root host | `185.199.110.153` | Sends `alkraj.com` to GitHub Pages |
@@ -52,7 +52,7 @@ Important:
 4. Set **Custom domain** to:
 
 ```text
-www.alkraj.com
+alkraj.com
 ```
 
 5. Wait for the Pages workflow to deploy.
@@ -66,17 +66,17 @@ If GitHub Pages is configured in a different repository from the one containing 
 Run these checks after saving DNS changes:
 
 ```bash
-dig www.alkraj.com CNAME +short
 dig alkraj.com A +short
+dig www.alkraj.com CNAME +short
 dig alkraj.com AAAA +short
-curl -I https://www.alkraj.com
+curl -I https://alkraj.com
 ```
 
 Expected results:
 
-- `www.alkraj.com` resolves to `tarunxt.github.io`.
 - `alkraj.com` resolves to the four GitHub Pages A records listed above.
+- `www.alkraj.com` resolves to `tarunxt.github.io`.
 - If IPv6 records were added, `alkraj.com` resolves to the four GitHub Pages AAAA records listed above.
-- `curl -I https://www.alkraj.com` returns a GitHub Pages response instead of a parking or default hosting page.
+- `curl -I https://alkraj.com` returns a GitHub Pages response instead of a parking or default hosting page.
 
 DNS and HTTPS certificate updates can take minutes to a few hours. If the old page still appears immediately after changing records, clear the browser cache or test in an incognito window.

@@ -1,6 +1,6 @@
-# Deployment checklist for `www.alkraj.com`
+# Deployment checklist for `alkraj.com`
 
-This repository is ready to deploy as a static GitHub Pages site for `www.alkraj.com`. If GitHub shows `DNS check unsuccessful`, the issue is almost always that the live DNS records for the domain still point somewhere else or are being edited at the wrong DNS provider.
+This repository is ready to deploy as a static GitHub Pages site for `alkraj.com`. If GitHub shows `DNS check unsuccessful`, the issue is almost always that the live DNS records for the domain still point somewhere else or are being edited at the wrong DNS provider.
 
 ## 1. Publish from GitHub Pages
 
@@ -11,12 +11,12 @@ This repository is ready to deploy as a static GitHub Pages site for `www.alkraj
 5. Under **Custom domain**, enter:
 
 ```text
-www.alkraj.com
+alkraj.com
 ```
 
 6. Save and wait for GitHub Pages to finish publishing.
 
-The `CNAME` file in this repository already tells GitHub Pages that the site should answer for `www.alkraj.com`.
+The `CNAME` file in this repository already tells GitHub Pages that the site should answer for `alkraj.com`.
 
 ## 2. Update DNS in OpenSRS or the authoritative DNS provider
 
@@ -34,7 +34,7 @@ Update website records only. Do **not** remove Zoho Mail or other email records.
 
 | Type | Host/Name | Value/Points to | Purpose |
 | --- | --- | --- | --- |
-| CNAME | `www` | `tarunxt.github.io` | Sends `www.alkraj.com` to GitHub Pages |
+| CNAME | `www` | `tarunxt.github.io` | Redirects `www.alkraj.com` to the GitHub Pages site |
 | A | `@` or blank root host | `185.199.108.153` | Sends `alkraj.com` to GitHub Pages |
 | A | `@` or blank root host | `185.199.109.153` | Sends `alkraj.com` to GitHub Pages |
 | A | `@` or blank root host | `185.199.110.153` | Sends `alkraj.com` to GitHub Pages |
@@ -46,6 +46,7 @@ Update website records only. Do **not** remove Zoho Mail or other email records.
 
 Important notes:
 
+- The root/apex `alkraj.com` host should use the four GitHub Pages A records above; most DNS providers do not allow a normal CNAME at the root.
 - The `www` host should point to `tarunxt.github.io`, not to `alkraj.com`, not to a GitHub repository URL, and not to any website parking target.
 - Remove any website, forwarding, parking, or default records for `www` or `@` if they conflict with the records above.
 - Keep MX, SPF, DKIM, and DMARC records unchanged so email continues working.
@@ -69,9 +70,9 @@ Use AWS later only if you add backend features such as login, databases, APIs, f
 After DNS has propagated, check:
 
 ```bash
-dig www.alkraj.com CNAME +short
 dig alkraj.com A +short
-curl -I https://www.alkraj.com
+dig www.alkraj.com CNAME +short
+curl -I https://alkraj.com
 ```
 
-A working setup returns `tarunxt.github.io` for `www.alkraj.com` and a GitHub Pages response for `https://www.alkraj.com` instead of a parking, forwarding, or default hosting page.
+A working setup returns the four GitHub Pages A records for `alkraj.com`, returns `tarunxt.github.io` for `www.alkraj.com`, and returns a GitHub Pages response for `https://alkraj.com` instead of the 404 page shown in the screenshot.
