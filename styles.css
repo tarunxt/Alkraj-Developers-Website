@@ -753,3 +753,184 @@ textarea:focus {
     min-height: 330px;
   }
 }
+
+/* Admin editing layer. The public homepage never renders these controls. */
+.admin-login {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 28px;
+}
+
+.admin-login-card {
+  width: min(520px, 100%);
+  padding: 44px;
+  border: 1px solid var(--line);
+  background: rgba(20, 20, 16, 0.94);
+  box-shadow: var(--shadow);
+}
+
+.admin-login-card h1 {
+  margin-bottom: 20px;
+  font-size: clamp(3.2rem, 8vw, 5.8rem);
+}
+
+.admin-login-card label {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 16px;
+  color: var(--gold-light);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.admin-login-error {
+  min-height: 1.5em;
+  color: #ffb8a8;
+}
+
+.admin-workspace[hidden],
+.admin-login[hidden] {
+  display: none;
+}
+
+.admin-toolbar {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 30;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  max-width: min(620px, calc(100% - 36px));
+  gap: 8px;
+  padding: 12px;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  background: rgba(8, 9, 8, 0.92);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.admin-toolbar strong,
+.admin-toolbar small {
+  padding: 0 8px;
+}
+
+.admin-toolbar button,
+.edit-drag-handle,
+.edit-card-handle,
+.edit-image-button {
+  min-height: 34px;
+  border: 1px solid rgba(231, 196, 119, 0.38);
+  color: var(--ink-dark);
+  background: var(--gold-light);
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: grab;
+}
+
+.admin-toolbar button {
+  padding: 0 12px;
+  cursor: pointer;
+}
+
+.editable-section {
+  position: relative;
+}
+
+[data-home-root="true"],
+[data-home-root] {
+  min-height: 40vh;
+}
+
+[data-home-root][data-editable="true"] .editable-section {
+  outline: 1px dashed rgba(231, 196, 119, 0.7);
+  outline-offset: -6px;
+}
+
+[data-home-root][data-editable="true"] [contenteditable="true"] {
+  cursor: text;
+  outline: 1px solid transparent;
+  outline-offset: 4px;
+}
+
+[data-home-root][data-editable="true"] [contenteditable="true"]:hover,
+[data-home-root][data-editable="true"] [contenteditable="true"]:focus {
+  outline-color: rgba(231, 196, 119, 0.78);
+  background: rgba(201, 155, 74, 0.08);
+}
+
+.edit-drag-handle,
+.edit-card-handle,
+.edit-image-button,
+.edit-resize-handle {
+  position: absolute;
+  z-index: 20;
+}
+
+.edit-drag-handle {
+  top: 12px;
+  left: 12px;
+  padding: 0 12px;
+}
+
+.edit-image-button {
+  top: 12px;
+  left: 86px;
+  padding: 0 12px;
+  cursor: pointer;
+}
+
+.edit-image-button.small {
+  top: 12px;
+  right: 12px;
+  left: auto;
+}
+
+.edit-card-handle {
+  top: 12px;
+  left: 12px;
+  width: 34px;
+  cursor: grab;
+}
+
+.edit-resize-handle {
+  right: 8px;
+  bottom: 8px;
+  width: 22px;
+  height: 22px;
+  border-right: 3px solid var(--gold-light);
+  border-bottom: 3px solid var(--gold-light);
+  cursor: nwse-resize;
+}
+
+.property-card {
+  position: relative;
+}
+
+.is-previewing .edit-drag-handle,
+.is-previewing .edit-card-handle,
+.is-previewing .edit-image-button,
+.is-previewing .edit-resize-handle,
+.is-previewing .admin-toolbar + [data-home-root] .editable-section {
+  outline: 0;
+}
+
+@media (max-width: 620px) {
+  .admin-login-card {
+    padding: 28px;
+  }
+
+  .admin-toolbar {
+    right: 10px;
+    bottom: 10px;
+    max-height: 38vh;
+    overflow: auto;
+  }
+}
