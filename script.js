@@ -1,5 +1,7 @@
 const CONTENT_STORAGE_KEY = 'alkrajHomeContent';
 const DEFAULT_CONTENT_URL = `${window.location.origin}/homeContent.json`;
+const TOUR_REQUEST_PRIMARY_EMAIL = 'hello@alkraj.com';
+const TOUR_REQUEST_CC_EMAILS = ['admin@alkraj.com'];
 
 const clone = (value) => JSON.parse(JSON.stringify(value));
 
@@ -160,12 +162,28 @@ const renderTestimonial = (content, editable) => `
     <span data-edit-path="testimonial.attribution">${escapeHtml(content.testimonial.attribution)}</span>
   </section>`;
 
-const renderContact = (content, editable) => `
+const renderContact = (content, editable) => {
+  const displayEmail = content.contact.email || TOUR_REQUEST_PRIMARY_EMAIL;
+  const primaryRecipient = TOUR_REQUEST_PRIMARY_EMAIL;
+  const ccRecipients = TOUR_REQUEST_CC_EMAILS.join(',');
+
+  return `
   <section class="contact section-shell editable-section" id="contact" data-section-id="contact"${sectionStyle(content, 'contact')}>
     ${editable ? '<button class="edit-drag-handle" type="button" draggable="true" aria-label="Move contact">Move</button><span class="edit-resize-handle" aria-hidden="true"></span>' : ''}
-    <div class="contact-copy"><p class="eyebrow" data-edit-path="contact.eyebrow">${escapeHtml(content.contact.eyebrow)}</p><h2 data-edit-path="contact.heading">${escapeHtml(content.contact.heading)}</h2><p data-edit-path="contact.body">${escapeHtml(content.contact.body)}</p><a href="mailto:${escapeAttr(content.contact.email)}" data-edit-path="contact.email">${escapeHtml(content.contact.email)}</a></div>
-    <form class="contact-form" data-mailto="${escapeAttr(content.contact.email)}"><label>Full name<input type="text" name="name" placeholder="Your name" required /></label><label>Phone or email<input type="text" name="contact" placeholder="+91 ... or you@example.com" required /></label><label>Requirement<textarea name="message" rows="4" placeholder="I am looking for a villa, penthouse, plot, or investment asset..."></textarea></label><button class="button primary" type="submit" data-edit-path="contact.buttonLabel">${escapeHtml(content.contact.buttonLabel)}</button></form>
+    <div class="contact-copy"><p class="eyebrow" data-edit-path="contact.eyebrow">${escapeHtml(content.contact.eyebrow)}</p><h2 data-edit-path="contact.heading">${escapeHtml(content.contact.heading)}</h2><p data-edit-path="contact.body">${escapeHtml(content.contact.body)}</p><a href="mailto:${escapeAttr(displayEmail)}" data-edit-path="contact.email">${escapeHtml(displayEmail)}</a></div>
+    <form class="contact-form" action="https://formsubmit.co/${escapeAttr(primaryRecipient)}" method="POST" data-ajax-action="https://formsubmit.co/ajax/${escapeAttr(primaryRecipient)}">
+      <input type="hidden" name="_subject" value="Private tour request" />
+      <input type="hidden" name="_cc" value="${escapeAttr(ccRecipients)}" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_captcha" value="false" />
+      <label>Full name<input type="text" name="name" placeholder="Your name" required /></label>
+      <label>Phone or email<input type="text" name="contact" placeholder="+91 ... or you@example.com" required /></label>
+      <label>Requirement<textarea name="message" rows="4" placeholder="I am looking for a villa, penthouse, plot, or investment asset..."></textarea></label>
+      <button class="button primary" type="submit" data-edit-path="contact.buttonLabel">${escapeHtml(content.contact.buttonLabel)}</button>
+      <p class="form-status" data-form-status role="status" aria-live="polite"></p>
+    </form>
   </section>`;
+};
 
 const sectionRenderers = {
   hero: renderHero,
@@ -214,26 +232,50 @@ const wireContactForm = () => {
   const contactForm = document.querySelector('.contact-form');
   if (!(contactForm instanceof HTMLFormElement)) return;
 
-  contactForm.addEventListener('submit', (event) => {
+  contactForm.addEventListener('submit', async (event) => {
     event.preventDefault();
-    const formData = new FormData(contactForm);
-    const recipient = contactForm.dataset.mailto || 'hello@alkraj.com';
-    const name = String(formData.get('name') || '').trim();
-    const contact = String(formData.get('contact') || '').trim();
-    const message = String(formData.get('message') || '').trim();
-    const subject = encodeURIComponent('Private tour request');
-    const body = encodeURIComponent([
-      `Name: ${name}`,
-      `Contact: ${contact}`,
-      `Message: ${message || 'Not provided'}`,
-    ].join('\n'));
 
-    window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    const status = contactForm.querySelector('[data-form-status]');
+    const formData = new FormData(contactForm);
+    const endpoint = contactForm.dataset.ajaxAction || contactForm.action;
+
+    if (submitButton instanceof HTMLButtonElement) submitButton.disabled = true;
+    if (status) {
+      status.classList.remove('is-error', 'is-success');
+      status.textContent = 'Sending your private tour request...';
+    }
+
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        body: formData,
+        headers: { Accept: 'application/json' },
+      });
+
+      if (!response.ok) throw new Error('Unable to submit tour request.');
+
+      contactForm.reset();
+      if (status) {
+        status.classList.add('is-success');
+        status.textContent = 'Thank you. Your request has been sent to Alkraj.';
+      }
+    } catch (error) {
+      console.error(error);
+      if (status) {
+        status.classList.add('is-error');
+        status.textContent = 'Sorry, the request could not be sent. Please email hello@alkraj.com directly.';
+      }
+    } finally {
+      if (submitButton instanceof HTMLButtonElement) submitButton.disabled = false;
+    }
   });
 };
 
 window.AlkrajContent = {
   CONTENT_STORAGE_KEY,
+  TOUR_REQUEST_CC_EMAILS,
+  TOUR_REQUEST_PRIMARY_EMAIL,
   clone,
   getStoredContent,
   loadDefaultContent,
