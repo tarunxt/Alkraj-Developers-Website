@@ -13,12 +13,9 @@ A basic static real estate website for `www.alkraj.com`. It can be hosted from G
 For this starter website, AWS is not required. Use this setup instead:
 
 1. Push this repository to GitHub.
-2. Enable GitHub Pages for the repository from **Settings → Pages**.
-3. Set the GitHub Pages custom domain to `www.alkraj.com`; the repository includes a `CNAME` file for this.
-4. In Zoho DNS, point the `www` CNAME record to your GitHub Pages default domain, such as `<your-github-user-or-org>.github.io`.
-5. Keep existing Zoho MX records unchanged so Zoho Mail continues working.
-
-If `www.alkraj.com` still shows a Zoho welcome page, the site files are not the problem; the domain is still pointed at Zoho parking/default website records. Follow `DEPLOYMENT.md` to connect Zoho DNS to GitHub Pages.
+2. Enable GitHub Pages for the repository.
+3. In Zoho DNS, add the GitHub Pages records for `www.alkraj.com`.
+4. Keep existing Zoho MX records unchanged so Zoho Mail continues working.
 
 AWS is only needed later if the website grows into a dynamic application that needs backend APIs, databases, file storage, authentication, or other cloud infrastructure.
 
