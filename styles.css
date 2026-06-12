@@ -27,11 +27,29 @@ body {
   min-height: 100vh;
   margin: 0;
   background:
-    radial-gradient(circle at top left, rgba(216, 169, 72, 0.18), transparent 30rem),
-    radial-gradient(circle at 85% 10%, rgba(13, 95, 59, 0.13), transparent 26rem),
+    radial-gradient(
+      circle at top left,
+      rgba(216, 169, 72, 0.18),
+      transparent 30rem
+    ),
+    radial-gradient(
+      circle at 85% 10%,
+      rgba(13, 95, 59, 0.13),
+      transparent 26rem
+    ),
     linear-gradient(135deg, #fbf8f1 0%, var(--bg) 48%, #efe7d9 100%);
   color: var(--ink);
-  font-family: Lato, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family:
+    Manrope,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  font-weight: 400;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
 }
 
@@ -41,10 +59,15 @@ body::before {
   z-index: -1;
   pointer-events: none;
   content: "";
-  background-image: linear-gradient(rgba(15, 81, 50, 0.035) 1px, transparent 1px),
+  background-image:
+    linear-gradient(rgba(15, 81, 50, 0.035) 1px, transparent 1px),
     linear-gradient(90deg, rgba(15, 81, 50, 0.035) 1px, transparent 1px);
   background-size: 56px 56px;
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), transparent 70%);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.65),
+    transparent 70%
+  );
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), transparent 70%);
 }
 
@@ -84,8 +107,8 @@ a {
 }
 
 .brand {
-  font-weight: 900;
-  letter-spacing: -0.02em;
+  font-weight: 600;
+  letter-spacing: -0.015em;
 }
 
 .brand-mark {
@@ -112,8 +135,11 @@ a {
   padding: 8px 12px;
   color: var(--muted);
   border-radius: 999px;
-  font-weight: 900;
-  transition: color 180ms ease, background 180ms ease, transform 180ms ease;
+  font-weight: 600;
+  transition:
+    color 180ms ease,
+    background 180ms ease,
+    transform 180ms ease;
 }
 
 .nav-links a:hover {
@@ -166,9 +192,9 @@ a {
 .eyebrow {
   margin: 0 0 12px;
   color: var(--brand);
-  font-size: 0.78rem;
-  font-weight: 900;
-  letter-spacing: 0.18em;
+  font-size: 0.76rem;
+  font-weight: 650;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
@@ -182,7 +208,7 @@ p {
 h1,
 h2,
 h3 {
-  font-weight: 900;
+  font-weight: 600;
 }
 
 h1 {
@@ -190,21 +216,24 @@ h1 {
   margin-bottom: 24px;
   font-size: clamp(3.2rem, 7.4vw, 6rem);
   line-height: 0.93;
-  letter-spacing: -0.065em;
+  font-weight: 600;
+  letter-spacing: -0.055em;
 }
 
 h2 {
   margin-bottom: 16px;
   font-size: clamp(2rem, 4vw, 3.35rem);
   line-height: 1.02;
-  letter-spacing: -0.045em;
+  font-weight: 600;
+  letter-spacing: -0.038em;
 }
 
 h3 {
   margin-bottom: 10px;
   font-size: 1.28rem;
   line-height: 1.15;
-  letter-spacing: -0.02em;
+  font-weight: 600;
+  letter-spacing: -0.018em;
 }
 
 .hero-copy > p:not(.eyebrow),
@@ -214,6 +243,7 @@ h3 {
 .service-grid p,
 .hero-card-content p {
   color: var(--muted);
+  font-weight: 400;
 }
 
 .hero-copy > p:not(.eyebrow) {
@@ -236,9 +266,13 @@ h3 {
   padding: 0 24px;
   border: 1px solid transparent;
   border-radius: 999px;
-  font-weight: 900;
+  font-weight: 600;
   cursor: pointer;
-  transition: box-shadow 180ms ease, transform 180ms ease, background 180ms ease, border-color 180ms ease;
+  transition:
+    box-shadow 180ms ease,
+    transform 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease;
 }
 
 .button:hover {
@@ -282,7 +316,7 @@ h3 {
 .hero-stats dt {
   color: var(--brand);
   font-size: 1.5rem;
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .hero-stats dd {
@@ -323,7 +357,10 @@ h3 {
 .service-grid article,
 .contact-form,
 .hero-stats div {
-  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
 }
 
 .property-card:hover,
@@ -342,7 +379,8 @@ h3 {
 
 .luxury-home {
   min-height: 420px;
-  background-image: linear-gradient(180deg, rgba(8, 53, 31, 0.02), rgba(8, 53, 31, 0.6)),
+  background-image:
+    linear-gradient(180deg, rgba(8, 53, 31, 0.02), rgba(8, 53, 31, 0.6)),
     url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80");
 }
 
@@ -373,7 +411,7 @@ h3 {
   border: 1px solid rgba(13, 95, 59, 0.08);
   border-radius: 999px;
   font-size: 0.74rem;
-  font-weight: 900;
+  font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -385,6 +423,10 @@ h3 {
   justify-content: space-between;
   gap: 12px;
   color: var(--brand);
+}
+
+.price-row strong {
+  font-weight: 600;
 }
 
 .section-heading {
@@ -422,7 +464,7 @@ h3 {
   border: 1px solid rgba(216, 169, 72, 0.18);
   border-radius: 999px;
   font-size: 0.82rem;
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .services,
@@ -444,7 +486,7 @@ h3 {
 
 .service-grid span {
   color: var(--accent);
-  font-weight: 900;
+  font-weight: 600;
   letter-spacing: 0.12em;
 }
 
@@ -464,7 +506,7 @@ h3 {
   display: grid;
   gap: 8px;
   color: var(--brand-dark);
-  font-weight: 900;
+  font-weight: 600;
 }
 
 input,
@@ -496,7 +538,7 @@ textarea:focus {
 
 .site-footer a {
   color: var(--brand);
-  font-weight: 900;
+  font-weight: 600;
 }
 
 @media (max-width: 860px) {
