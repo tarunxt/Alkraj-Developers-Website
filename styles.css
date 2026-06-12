@@ -209,7 +209,6 @@ h3 {
 
 .hero-copy > p:not(.eyebrow),
 .section-heading > p,
-.hosting p,
 .contact-copy p,
 .property-content p,
 .service-grid p,
@@ -295,7 +294,6 @@ h3 {
 .hero-card,
 .property-card,
 .service-grid article,
-.setup-card,
 .contact-form {
   overflow: hidden;
   background: var(--surface);
@@ -323,7 +321,6 @@ h3 {
 
 .property-card,
 .service-grid article,
-.setup-card,
 .contact-form,
 .hero-stats div {
   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
@@ -363,7 +360,6 @@ h3 {
 
 .hero-card-content,
 .property-content,
-.setup-card,
 .contact-form {
   padding: 28px;
 }
@@ -430,7 +426,6 @@ h3 {
 }
 
 .services,
-.hosting,
 .contact {
   padding: 84px 0;
 }
@@ -453,61 +448,11 @@ h3 {
   letter-spacing: 0.12em;
 }
 
-.hosting,
 .contact {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
   gap: 32px;
   align-items: center;
-}
-
-.hosting {
-  position: relative;
-  overflow: hidden;
-  padding-right: 36px;
-  padding-left: 36px;
-  background:
-    radial-gradient(circle at 88% 18%, rgba(216, 169, 72, 0.28), transparent 17rem),
-    linear-gradient(135deg, #0f6b43, var(--brand-dark));
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 42px;
-  box-shadow: var(--shadow-strong);
-}
-
-.hosting::before {
-  position: absolute;
-  inset: 18px;
-  pointer-events: none;
-  content: "";
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 30px;
-}
-
-.hosting .eyebrow,
-.hosting h2,
-.hosting p {
-  color: white;
-}
-
-.setup-card {
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 18px 55px rgba(3, 26, 15, 0.16);
-}
-
-.setup-card ol {
-  padding-left: 22px;
-}
-
-.setup-card li + li {
-  margin-top: 10px;
-}
-
-.note {
-  padding: 14px;
-  color: var(--brand) !important;
-  background: #ecf6ef;
-  border-radius: 18px;
-  font-weight: 900;
 }
 
 .contact-form {
@@ -580,7 +525,6 @@ textarea:focus {
 
   .hero,
   .services,
-  .hosting,
   .contact {
     grid-template-columns: 1fr;
   }
@@ -592,10 +536,6 @@ textarea:focus {
   .property-grid,
   .service-grid {
     grid-template-columns: 1fr;
-  }
-
-  .hosting {
-    padding: 36px 20px;
   }
 }
 
