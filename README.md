@@ -14,7 +14,7 @@ For this starter website, AWS is not required. Use this setup instead:
 
 1. Push this repository to GitHub.
 2. Enable GitHub Pages for the repository.
-3. In Zoho DNS, add the GitHub Pages records for `www.alkraj.com`.
+3. In Zoho DNS, point `www.alkraj.com` to `tarunxt.github.io` and remove conflicting Zoho Website/parking records.
 4. Keep existing Zoho MX records unchanged so Zoho Mail continues working.
 
 AWS is only needed later if the website grows into a dynamic application that needs backend APIs, databases, file storage, authentication, or other cloud infrastructure.
@@ -28,3 +28,7 @@ python3 -m http.server 8000
 ```
 
 Then visit `http://localhost:8000`.
+
+## Domain not opening
+
+If `https://www.alkraj.com` shows the Zoho welcome page, follow `DNS_FIX.md`. The required website record is `www` → `tarunxt.github.io`; keep Zoho Mail records unchanged.
