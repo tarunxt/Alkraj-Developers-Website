@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Edit Homepage | Alkraj Real Estate</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="admin-page">
+    <div class="admin-login" data-login-screen>
+      <form class="admin-login-card" data-login-form>
+        <p class="eyebrow">Protected editor</p>
+        <h1>Alkraj admin login</h1>
+        <p>Sign in to edit the live homepage mirror.</p>
+        <label>Username<input type="text" name="username" autocomplete="username" required /></label>
+        <label>Password<input type="password" name="password" autocomplete="current-password" required /></label>
+        <p class="admin-login-error" data-login-error role="alert"></p>
+        <button class="button primary" type="submit">Log in</button>
+      </form>
+    </div>
+
+    <div class="admin-workspace" data-admin-app hidden>
+      <header class="site-header">
+        <nav class="navbar" aria-label="Primary navigation">
+          <a class="brand" href="#home" aria-label="Alkraj Real Estate home">
+            <span class="brand-mark">A</span>
+            <span>
+              <strong>Alkraj</strong>
+              <small>Luxury Real Estate</small>
+            </span>
+          </a>
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+            <span class="sr-only">Toggle menu</span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </button>
+          <div class="nav-links" id="primary-menu">
+            <a href="#properties">Properties</a>
+            <a href="#services">Services</a>
+            <a href="#experience">Experience</a>
+            <a class="nav-cta" href="#contact">Book a tour</a>
+          </div>
+        </nav>
+      </header>
+
+      <aside class="admin-toolbar" aria-label="Homepage editor controls">
+        <strong>Homepage editor</strong>
+        <button type="button" data-preview-toggle>Preview</button>
+        <button type="button" data-save-content>Save Changes</button>
+        <button type="button" data-reset-draft>Reset Changes</button>
+        <button type="button" data-logout>Logout</button>
+        <small data-save-status>Unsaved draft</small>
+      </aside>
+
+      <main id="home" data-home-root data-admin-canvas aria-live="polite"></main>
+
+      <footer class="site-footer">
+        <p>© <span id="year"></span> Alkraj Real Estate. Luxury property advisory.</p>
+        <a href="#home">Back to top</a>
+      </footer>
+    </div>
+
+    <input class="sr-only" type="file" accept="image/*" data-image-upload />
+    <script src="../script.js"></script>
+    <script src="edit.js"></script>
+  </body>
+</html>
