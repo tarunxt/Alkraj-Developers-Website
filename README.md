@@ -6,7 +6,7 @@ A basic static real estate website for `www.alkraj.com`. It can be hosted from G
 
 - Responsive landing page with hero, featured property, sample listings, services, setup guidance, and enquiry form.
 - Mobile navigation menu.
-- Clear guidance that Zoho can continue to manage DNS and email while GitHub Pages hosts the static site.
+- Clear guidance that OpenSRS or the authoritative DNS provider can manage DNS, Zoho can continue handling email, and GitHub Pages can host the static site.
 
 ## Hosting recommendation
 
@@ -14,7 +14,7 @@ For this starter website, AWS is not required. Use this setup instead:
 
 1. Push this repository to GitHub.
 2. Enable GitHub Pages for the repository.
-3. In Zoho DNS, point `www.alkraj.com` to `tarunxt.github.io` and remove conflicting Zoho Website/parking records.
+3. In OpenSRS or the authoritative DNS provider, point `www.alkraj.com` to `tarunxt.github.io` and remove conflicting website, forwarding, or parking records.
 4. Keep existing Zoho MX records unchanged so Zoho Mail continues working.
 
 AWS is only needed later if the website grows into a dynamic application that needs backend APIs, databases, file storage, authentication, or other cloud infrastructure.
@@ -31,4 +31,4 @@ Then visit `http://localhost:8000`.
 
 ## Domain not opening
 
-If `https://www.alkraj.com` shows the Zoho welcome page, follow `DNS_FIX.md`. The required website record is `www` → `tarunxt.github.io`; keep Zoho Mail records unchanged.
+If GitHub Pages shows `DNS check unsuccessful` or `https://www.alkraj.com` opens a parking/default page, follow `DNS_FIX.md`. The required website record is `www` → `tarunxt.github.io`; keep Zoho Mail records unchanged.
