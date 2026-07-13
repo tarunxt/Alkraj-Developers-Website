@@ -955,3 +955,118 @@ textarea:focus {
     overflow: auto;
   }
 }
+
+.projects-page {
+  padding-top: 86px;
+}
+
+.projects-hero {
+  padding: 120px 0 58px;
+  text-align: center;
+}
+
+.projects-hero h1 {
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+.projects-hero p:not(.eyebrow) {
+  max-width: 760px;
+  margin-inline: auto;
+  color: var(--muted);
+  font-size: 1.06rem;
+}
+
+.construction-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  padding-bottom: 110px;
+}
+
+.construction-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: rgba(20, 20, 16, 0.92);
+  box-shadow: var(--shadow);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.construction-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(231, 196, 119, 0.44);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.44);
+}
+
+.construction-image {
+  min-height: 360px;
+  background-position: center;
+  background-size: cover;
+  filter: saturate(0.94) contrast(1.04);
+}
+
+.construction-content {
+  padding: 30px;
+}
+
+.construction-content h2 {
+  margin-bottom: 12px;
+  font-size: clamp(2.2rem, 4vw, 3.6rem);
+}
+
+.construction-content p {
+  color: var(--muted);
+}
+
+.construction-content dl {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin: 26px 0 0;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+
+.construction-content dl div {
+  padding: 16px;
+  background: rgba(18, 17, 13, 0.94);
+}
+
+.construction-content dt {
+  color: var(--gold-light);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.construction-content dd {
+  margin: 6px 0 0;
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+@media (max-width: 980px) {
+  .construction-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .projects-hero {
+    padding: 82px 0 42px;
+  }
+
+  .construction-grid {
+    padding-bottom: 72px;
+  }
+
+  .construction-image {
+    min-height: 300px;
+  }
+
+  .construction-content dl {
+    grid-template-columns: 1fr;
+  }
+}
