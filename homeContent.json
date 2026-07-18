@@ -11,10 +11,10 @@
     "contact"
   ],
   "hero": {
-    "image": "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=2200&q=85",
-    "eyebrow": "Private property collection",
-    "heading": "Discover refined living in signature estates.",
-    "body": "Alkraj Real Estate presents a curated portfolio of distinguished villas, penthouses, and land opportunities for clients who value privacy, architecture, and long-term confidence.",
+    "image": "https://www.gaursyamunacity.com/wp-content/uploads/2026/06/Gaur-Chrysalis-Final-Brochure_251207_085127_Page_26-1024x512.png",
+    "eyebrow": "Gaur Chrysalis Plume",
+    "heading": "Gaur Chrysalis Plume at Yamuna Expressway.",
+    "body": "Themed luxury 3 & 4 BHK residences in Sector 22-D, Yamuna Expressway with open green living, premium amenities, and fast access to the NCR growth corridor.",
     "buttons": [
       {
         "label": "View residences",
@@ -28,106 +28,122 @@
       }
     ],
     "featured": {
-      "label": "Featured Estate",
-      "title": "Serenity Villa",
-      "body": "Private garden • grand lounge • gated community",
-      "price": "From ₹4.5 Cr"
+      "label": "Featured Project",
+      "title": "Gaur Chrysalis Plume",
+      "body": "3 & 4 BHK • Sector 22-D • Yamuna Expressway",
+      "price": "From ₹1.30 Cr*"
     }
   },
   "intro": {
-    "eyebrow": "Alkraj approach",
-    "heading": "Luxury real estate shaped around discretion and detail.",
-    "body": "From first shortlist to final negotiation, our advisory process is designed for calm decisions, transparent information, and properties that feel exceptional from the first arrival.",
+    "eyebrow": "Project spotlight",
+    "heading": "A single-residential showcase for Gaur Chrysalis Plume.",
+    "body": "Gaur Chrysalis 2.0 is positioned as a thoughtfully designed residential landmark near the upcoming Jewar International Airport, combining modern architecture, open green spaces, and a refined lifestyle ecosystem.",
     "stats": [
       {
-        "value": "32+",
-        "label": "Curated assets"
+        "value": "9.6",
+        "label": "Acres development"
       },
       {
-        "value": "18",
-        "label": "Prime corridors"
+        "value": "3 & 4",
+        "label": "BHK residences"
       },
       {
-        "value": "24h",
-        "label": "Tour response"
+        "value": "20X5",
+        "label": "Payment plan"
       }
     ]
   },
   "propertiesHeading": {
-    "eyebrow": "Exclusive listings",
-    "heading": "Residences selected for architecture, location, and lifestyle."
+    "eyebrow": "Residential project",
+    "heading": "Gaur Chrysalis Plume details at a glance."
   },
   "properties": [
     {
-      "tag": "Signature villa",
-      "title": "Grand Courtyard Estate",
-      "body": "A resort-inspired residence with formal entertaining zones, family lounges, landscaped decks, and a private arrival court.",
-      "image": "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1400&q=84",
+      "tag": "Gaur Chrysalis 2.0",
+      "title": "Gaur Chrysalis Plume",
+      "body": "Themed luxury apartments in Sector 22-D on Yamuna Expressway with 3 BHK and 4 BHK layouts, premium development scale, and a future-ready location.",
+      "image": "https://www.gaursyamunacity.com/wp-content/uploads/2026/06/Gaur-Chrysalis-Final-Brochure_251207_085127_Page_26-1024x512.png",
       "feature": true,
       "facts": [
-        "5 Suites",
-        "7,800 sq.ft.",
-        "Pool deck"
-      ]
-    },
-    {
-      "tag": "Penthouse",
-      "title": "Skyline Duplex Residence",
-      "body": "Elevated city views, warm stone finishes, private terrace dining, and concierge-ready convenience.",
-      "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=84",
-      "feature": false,
-      "facts": [
-        "4 Beds",
-        "4 Baths",
-        "Terrace"
-      ]
-    },
-    {
-      "tag": "Modern villa",
-      "title": "Minimal Garden Villa",
-      "body": "Clean architectural lines, double-height living, shaded verandas, and a quiet family-first floor plan.",
-      "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=84",
-      "feature": false,
-      "facts": [
-        "4 Suites",
-        "Garden",
-        "3 Parking"
-      ]
-    },
-    {
-      "tag": "Gaur Chrysalis 2.0",
-      "title": "Code Name Plume",
-      "body": "Themed luxury 3 & 4 BHK apartments in Sector 22-D on Yamuna Expressway, positioned near NCR growth corridors with premium amenities and open green spaces.",
-      "image": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=84",
-      "feature": false,
-      "facts": [
-        "3 & 4 BHK",
-        "Sector 22-D",
+        "3 BHK 1625 sq.ft.",
+        "4 BHK 1960 sq.ft.",
         "From ₹1.30 Cr*"
-      ]
+      ],
+      "details": {
+        "kicker": "Themed Luxury Residences",
+        "subtitle": "At Sector 22-D, Yamuna Expressway",
+        "price": "Starting at ₹1.30 Cr*",
+        "paymentPlan": "Payment Plan: 20X5",
+        "rera": "UPRERAPRJ622344/11/2025",
+        "overview": [
+          "Thoughtfully designed residential landmark in the rapidly evolving Yamuna Expressway corridor.",
+          "Close to the upcoming Jewar International Airport and NCR growth hubs.",
+          "Spacious 3 & 4 BHK residences with modern architecture, open green spaces, and premium amenities."
+        ],
+        "pricing": [
+          {
+            "type": "3 BHK",
+            "size": "1625 Sq. Ft.",
+            "price": "₹1.30 Cr*"
+          },
+          {
+            "type": "4 BHK",
+            "size": "1960 Sq. Ft.",
+            "price": "₹1.66 Cr*"
+          }
+        ],
+        "highlights": [
+          "Rapid Infrastructure Growth",
+          "9.6 Acres of Premium Development",
+          "Refined Lifestyle Ecosystem",
+          "High ROI Potential",
+          "Gated Secure Community",
+          "Smart Home Ready",
+          "Seamless NCR Connectivity",
+          "High-Growth Investment"
+        ],
+        "amenities": [
+          "Kids Play Area",
+          "Swimming Pool",
+          "Tennis Court",
+          "Car Parking",
+          "Basketball Court",
+          "Indoor Games",
+          "Gymnasium",
+          "Yoga Deck"
+        ],
+        "location": [
+          "Yamuna Expressway - 15 Mins",
+          "Jewar Airport - 15 Mins",
+          "Pari Chowk - 15 Mins",
+          "Jaypee Sports City - 2 Mins",
+          "Galgotias University - 10 Mins",
+          "Film City - 12 Mins"
+        ]
+      }
     }
   ],
   "experience": {
-    "image": "https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?auto=format&fit=crop&w=1200&q=84",
-    "eyebrow": "The experience",
-    "heading": "Every visit is prepared like a private showing.",
-    "body": "We coordinate availability, neighborhood context, comparable pricing, documentation readiness, and investment rationale before each tour, so your time on site is focused and valuable.",
+    "image": "https://www.gaursyamunacity.com/wp-content/uploads/2026/06/Gaur-Chrysalis-Final-Brochure_251207_085127_Page_26-1024x512.png",
+    "eyebrow": "Lifestyle ecosystem",
+    "heading": "Iconic living wrapped in green, resort-style comfort.",
+    "body": "The project emphasizes expansive layouts, a premium amenity mix, secure community planning, and strong connectivity for end users and long-term investors.",
     "process": [
       {
         "number": "01",
-        "title": "Private discovery",
-        "body": "We clarify lifestyle priorities, capital plan, and location fit."
+        "title": "Location advantage",
+        "body": "Sector 22-D on Yamuna Expressway connects quickly to Jewar Airport, Pari Chowk, Jaypee Sports City, Galgotias University, and the upcoming Film City."
       },
       {
         "number": "02",
-        "title": "Curated shortlist",
-        "body": "Only aligned properties are presented with clear next steps."
+        "title": "Residential comfort",
+        "body": "3 & 4 BHK layouts are supported by lifestyle amenities including pool, courts, indoor games, gymnasium, yoga deck, and kids play areas."
       }
     ]
   },
   "services": {
     "eyebrow": "Concierge advisory",
-    "heading": "Services for discerning buyers, owners, and investors.",
+    "heading": "Advisory support for Gaur Chrysalis Plume buyers.",
     "items": [
       {
         "number": "01",
@@ -147,13 +163,13 @@
     ]
   },
   "testimonial": {
-    "quote": "“The right home is not merely a transaction. It is a considered decision about space, privacy, and the life you want to build.”",
+    "quote": "“Gaur Chrysalis Plume brings location, themed luxury, and amenity-led residential living into one focused Yamuna Expressway opportunity.”",
     "attribution": "Alkraj Private Desk"
   },
   "contact": {
     "eyebrow": "Private consultation",
-    "heading": "Begin with a tailored property conversation.",
-    "body": "Share your preferred location, budget, and timeline. Our team will respond with a discreet shortlist or arrange a private viewing.",
+    "heading": "Request details for Gaur Chrysalis Plume.",
+    "body": "Share your name and contact details to receive pricing guidance, availability updates, brochure support, or a private site visit for Gaur Chrysalis Plume.",
     "email": "hello@alkraj.com",
     "buttonLabel": "Request private tour"
   },
