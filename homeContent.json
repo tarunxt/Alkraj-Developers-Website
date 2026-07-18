@@ -1,14 +1,31 @@
 {
   "version": 1,
-  "sectionsOrder": ["hero", "intro", "propertiesHeading", "properties", "experience", "services", "testimonial", "contact"],
+  "sectionsOrder": [
+    "hero",
+    "intro",
+    "propertiesHeading",
+    "properties",
+    "experience",
+    "services",
+    "testimonial",
+    "contact"
+  ],
   "hero": {
     "image": "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=2200&q=85",
     "eyebrow": "Private property collection",
     "heading": "Discover refined living in signature estates.",
     "body": "Alkraj Real Estate presents a curated portfolio of distinguished villas, penthouses, and land opportunities for clients who value privacy, architecture, and long-term confidence.",
     "buttons": [
-      { "label": "View residences", "href": "#properties", "style": "primary" },
-      { "label": "Schedule consultation", "href": "#contact", "style": "secondary" }
+      {
+        "label": "View residences",
+        "href": "#properties",
+        "style": "primary"
+      },
+      {
+        "label": "Schedule consultation",
+        "href": "#contact",
+        "style": "secondary"
+      }
     ],
     "featured": {
       "label": "Featured Estate",
@@ -22,9 +39,18 @@
     "heading": "Luxury real estate shaped around discretion and detail.",
     "body": "From first shortlist to final negotiation, our advisory process is designed for calm decisions, transparent information, and properties that feel exceptional from the first arrival.",
     "stats": [
-      { "value": "32+", "label": "Curated assets" },
-      { "value": "18", "label": "Prime corridors" },
-      { "value": "24h", "label": "Tour response" }
+      {
+        "value": "32+",
+        "label": "Curated assets"
+      },
+      {
+        "value": "18",
+        "label": "Prime corridors"
+      },
+      {
+        "value": "24h",
+        "label": "Tour response"
+      }
     ]
   },
   "propertiesHeading": {
@@ -38,7 +64,11 @@
       "body": "A resort-inspired residence with formal entertaining zones, family lounges, landscaped decks, and a private arrival court.",
       "image": "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1400&q=84",
       "feature": true,
-      "facts": ["5 Suites", "7,800 sq.ft.", "Pool deck"]
+      "facts": [
+        "5 Suites",
+        "7,800 sq.ft.",
+        "Pool deck"
+      ]
     },
     {
       "tag": "Penthouse",
@@ -46,7 +76,11 @@
       "body": "Elevated city views, warm stone finishes, private terrace dining, and concierge-ready convenience.",
       "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=84",
       "feature": false,
-      "facts": ["4 Beds", "4 Baths", "Terrace"]
+      "facts": [
+        "4 Beds",
+        "4 Baths",
+        "Terrace"
+      ]
     },
     {
       "tag": "Modern villa",
@@ -54,7 +88,23 @@
       "body": "Clean architectural lines, double-height living, shaded verandas, and a quiet family-first floor plan.",
       "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=84",
       "feature": false,
-      "facts": ["4 Suites", "Garden", "3 Parking"]
+      "facts": [
+        "4 Suites",
+        "Garden",
+        "3 Parking"
+      ]
+    },
+    {
+      "tag": "Gaur Chrysalis 2.0",
+      "title": "Code Name Plume",
+      "body": "Themed luxury 3 & 4 BHK apartments in Sector 22-D on Yamuna Expressway, positioned near NCR growth corridors with premium amenities and open green spaces.",
+      "image": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=84",
+      "feature": false,
+      "facts": [
+        "3 & 4 BHK",
+        "Sector 22-D",
+        "From ₹1.30 Cr*"
+      ]
     }
   ],
   "experience": {
@@ -63,17 +113,37 @@
     "heading": "Every visit is prepared like a private showing.",
     "body": "We coordinate availability, neighborhood context, comparable pricing, documentation readiness, and investment rationale before each tour, so your time on site is focused and valuable.",
     "process": [
-      { "number": "01", "title": "Private discovery", "body": "We clarify lifestyle priorities, capital plan, and location fit." },
-      { "number": "02", "title": "Curated shortlist", "body": "Only aligned properties are presented with clear next steps." }
+      {
+        "number": "01",
+        "title": "Private discovery",
+        "body": "We clarify lifestyle priorities, capital plan, and location fit."
+      },
+      {
+        "number": "02",
+        "title": "Curated shortlist",
+        "body": "Only aligned properties are presented with clear next steps."
+      }
     ]
   },
   "services": {
     "eyebrow": "Concierge advisory",
     "heading": "Services for discerning buyers, owners, and investors.",
     "items": [
-      { "number": "01", "title": "Luxury acquisition", "body": "Confidential buyer representation for premium villas, apartments, plots, and off-market opportunities." },
-      { "number": "02", "title": "Owner representation", "body": "Position your property with premium presentation, qualified enquiries, and negotiation support." },
-      { "number": "03", "title": "Investment advisory", "body": "Evaluate land, commercial spaces, rental yield, and development potential with a practical lens." }
+      {
+        "number": "01",
+        "title": "Luxury acquisition",
+        "body": "Confidential buyer representation for premium villas, apartments, plots, and off-market opportunities."
+      },
+      {
+        "number": "02",
+        "title": "Owner representation",
+        "body": "Position your property with premium presentation, qualified enquiries, and negotiation support."
+      },
+      {
+        "number": "03",
+        "title": "Investment advisory",
+        "body": "Evaluate land, commercial spaces, rental yield, and development potential with a practical lens."
+      }
     ]
   },
   "testimonial": {
