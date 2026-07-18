@@ -1070,3 +1070,157 @@ textarea:focus {
     grid-template-columns: 1fr;
   }
 }
+
+.property-details-button {
+  width: 100%;
+  margin-top: 24px;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.project-modal[hidden] {
+  display: none;
+}
+
+.project-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.project-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 7, 4, 0.78);
+  backdrop-filter: blur(12px);
+}
+
+.project-modal-panel {
+  position: relative;
+  z-index: 1;
+  width: min(1040px, 100%);
+  max-height: min(90vh, 900px);
+  overflow: auto;
+  border: 1px solid rgba(231, 196, 119, 0.42);
+  background: linear-gradient(180deg, #1a2215 0%, #0b0f0a 100%);
+  box-shadow: 0 36px 120px rgba(0, 0, 0, 0.62);
+}
+
+.project-modal-close {
+  position: sticky;
+  top: 18px;
+  float: right;
+  z-index: 3;
+  width: 44px;
+  height: 44px;
+  margin: 18px 18px -62px 0;
+  color: var(--ink);
+  border: 1px solid rgba(231, 196, 119, 0.5);
+  background: rgba(10, 11, 10, 0.78);
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.project-modal-hero {
+  min-height: 420px;
+  padding: 76px 46px 38px;
+  background-position: center;
+  background-size: cover;
+}
+
+.project-modal-hero h2 {
+  max-width: 760px;
+  color: var(--gold-light);
+}
+
+.modal-badges,
+.price-list,
+.detail-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.modal-badges {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 32px;
+}
+
+.modal-badges span,
+.price-list article,
+.detail-grid li {
+  border: 1px solid rgba(231, 196, 119, 0.24);
+  background: rgba(245, 239, 227, 0.08);
+  padding: 16px;
+}
+
+.project-modal-body {
+  display: grid;
+  gap: 28px;
+  padding: 42px 46px 50px;
+}
+
+.price-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.price-list article {
+  display: grid;
+  gap: 8px;
+}
+
+.price-list b,
+.price-list strong {
+  color: var(--gold-light);
+}
+
+.detail-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+@media (max-width: 760px) {
+  .modal-badges,
+  .price-list,
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-modal {
+    padding: 12px;
+  }
+
+  .project-modal-hero,
+  .project-modal-body {
+    padding-right: 22px;
+    padding-left: 22px;
+  }
+}
+
+.property-card:only-child {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(320px, 1.1fr) minmax(280px, 0.9fr);
+}
+
+.property-card:only-child .property-image {
+  min-height: 560px;
+}
+
+.property-card:only-child .property-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (max-width: 860px) {
+  .property-card:only-child {
+    grid-template-columns: 1fr;
+  }
+}

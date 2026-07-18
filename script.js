@@ -113,6 +113,37 @@ const renderIntro = (content, editable) => `
     </dl>
   </section>`;
 
+
+const renderList = (items = []) => items.map((item) => `<li>${escapeHtml(item)}</li>`).join('');
+
+const renderProjectModal = (content) => {
+  const propertyIndex = content.properties.findIndex((property) => property.details);
+  if (propertyIndex < 0) return '';
+  const property = content.properties[propertyIndex];
+  const details = property.details;
+  return `
+    <div class="project-modal" data-project-modal hidden>
+      <div class="project-modal-backdrop" data-project-modal-close></div>
+      <article class="project-modal-panel" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+        <button class="project-modal-close" type="button" data-project-modal-close aria-label="Close project details">×</button>
+        <div class="project-modal-hero" style="background-image: linear-gradient(90deg, rgba(24, 34, 19, 0.94), rgba(24, 34, 19, 0.62)), url('${escapeAttr(property.image)}')">
+          <p class="eyebrow">${escapeHtml(details.kicker)}</p>
+          <h2 id="project-modal-title">${escapeHtml(property.title)}</h2>
+          <p>${escapeHtml(details.subtitle)}</p>
+          <div class="modal-badges"><span>${escapeHtml(details.price)}</span><span>${escapeHtml(details.paymentPlan)}</span><span>RERA: ${escapeHtml(details.rera)}</span></div>
+        </div>
+        <div class="project-modal-body">
+          <section><h3>Overview</h3>${details.overview.map((text) => `<p>${escapeHtml(text)}</p>`).join('')}</section>
+          <section><h3>Price List</h3><div class="price-list">${details.pricing.map((item) => `<article><strong>${escapeHtml(item.type)}</strong><span>${escapeHtml(item.size)}</span><b>${escapeHtml(item.price)}</b></article>`).join('')}</div></section>
+          <section><h3>Highlights</h3><ul class="detail-grid">${renderList(details.highlights)}</ul></section>
+          <section><h3>Amenities</h3><ul class="detail-grid">${renderList(details.amenities)}</ul></section>
+          <section><h3>Location Advantage</h3><ul class="detail-grid">${renderList(details.location)}</ul></section>
+          <section><h3>About Builder</h3><p>Gaursons India has a legacy of excellence in NCR real estate with successful residential, commercial, retail, hospitality, healthcare, and education developments.</p></section>
+        </div>
+      </article>
+    </div>`;
+};
+
 const renderPropertiesHeading = (content, editable) => `
   <section class="section-shell section-heading editable-section" id="properties" data-section-id="propertiesHeading"${sectionStyle(content, 'propertiesHeading')}>
     ${editable ? '<button class="edit-drag-handle" type="button" draggable="true" aria-label="Move properties heading">Move</button><span class="edit-resize-handle" aria-hidden="true"></span>' : ''}
@@ -132,9 +163,11 @@ const renderProperties = (content, editable) => `
           <h3 data-edit-path="properties.${index}.title">${escapeHtml(property.title)}</h3>
           <p data-edit-path="properties.${index}.body">${escapeHtml(property.body)}</p>
           <ul>${property.facts.map((fact, factIndex) => `<li data-edit-path="properties.${index}.facts.${factIndex}">${escapeHtml(fact)}</li>`).join('')}</ul>
+          ${property.details && !editable ? `<button class="button primary property-details-button" type="button" data-project-index="${index}">View project details</button>` : ''}
         </div>
       </article>`).join('')}
-  </section>`;
+  </section>
+  ${!editable ? renderProjectModal(content) : ''}`;
 
 const renderExperience = (content, editable) => `
   <section class="experience section-shell editable-section" id="experience" data-section-id="experience"${sectionStyle(content, 'experience')}>
@@ -228,6 +261,27 @@ const wireGlobalInteractions = () => {
   }
 };
 
+
+const wireProjectModal = () => {
+  const modal = document.querySelector('[data-project-modal]');
+  if (!(modal instanceof HTMLElement)) return;
+  const openButtons = document.querySelectorAll('[data-project-index]');
+  const closeButtons = modal.querySelectorAll('[data-project-modal-close]');
+  const openModal = () => {
+    modal.hidden = false;
+    document.body.classList.add('modal-open');
+  };
+  const closeModal = () => {
+    modal.hidden = true;
+    document.body.classList.remove('modal-open');
+  };
+  openButtons.forEach((button) => button.addEventListener('click', openModal));
+  closeButtons.forEach((button) => button.addEventListener('click', closeModal));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !modal.hidden) closeModal();
+  });
+};
+
 const wireContactForm = () => {
   const contactForm = document.querySelector('.contact-form');
   if (!(contactForm instanceof HTMLFormElement)) return;
@@ -285,6 +339,7 @@ window.AlkrajContent = {
   saveStoredContent,
   wireContactForm,
   wireGlobalInteractions,
+  wireProjectModal,
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -293,6 +348,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
       const content = await loadHomeContent();
       renderHome(content);
+      wireProjectModal();
       wireContactForm();
     } catch (error) {
       console.error(error);
